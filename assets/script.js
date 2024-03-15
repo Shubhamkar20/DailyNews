@@ -1,16 +1,40 @@
 
 
+// apikey = 'db7e613999f8307172b01196cfbf1c61';
+// url = 'https://gnews.io/api/v4/search?q=example&lang=en&country=us&max=10&apikey=' + apikey;
 
-const apiKey = '14cb86ac492a406f81006f55ee58f978';
-const url = 'https://newsapi.org/v2/everything?q=';
+// fetch(url)
+//   .then(function (response) {
+//     return response.json();
+//   })
+//   .then(function (data) {
+//     articles = data.articles;
 
-window.addEventListener('load', ()=> getNews("India"));
+//     for (i = 0; i < articles.length; i++) {
+//       // articles[i].title
+//       console.log("Title: " + articles[i]['title']);
+//       // articles[i].description
+//       console.log("Description: " + articles[i]['description']);
+//       // You can replace {property} below with any of the article properties returned by the API.
+//       // articles[i].{property}
+//       // console.log(articles[i]['{property}']);
+
+//       // Delete this line to display all the articles returned by the request. Currently only the first article is displayed.
+//       break;
+//     }
+//   });
+const apiKey = 'db7e613999f8307172b01196cfbf1c61';
+const url = 'https://gnews.io/api/v4/search?q=';
+
+// window.addEventListener('load', ()=> getNews("India"));
 
 async function getNews(query) {
     const response = await fetch(`${url}${query}&apiKey=${apiKey}`);
     const data = await response.json();
-    bindArticles(data.articles)
+    // bindArticles(data.articles)
+    console.log(data.articles)
 }
+getNews('India')
 
 function bindArticles(articles) {
     const rowMain = document.getElementById('row');
@@ -49,12 +73,13 @@ function addData(articleClone, article){
 
 
 function searchQuery(){
+    event.preventDefault();
     const query = document.getElementById('searchInput').value;
     if(!query){
         return;
     }
     getNews(query);
+    console.log(query)
 
 }
-
 
