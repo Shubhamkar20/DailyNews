@@ -1,15 +1,15 @@
 
-const apiKey = '14cb86ac492a406f81006f55ee58f978';
-const url = 'https://newsapi.org/v2/everything?q=';
+// const apiKey = '1mP6s8frHSlWnecWq0YWAWhxANxOfMFeFlQNd4zD';
+// const url = ' https://api.thenewsapi.com/v1/news/headlines?locale=us&language=en&api_token=';
 
-window.addEventListener('load', ()=> getNews("India"));
+// window.addEventListener('load', ()=> getNews());
 
-async function getNews(query) {
-    const response = await fetch(`${url}${query}&apiKey=${apiKey}`);
-    const data = await response.json();
-    // bindArticles(data.articles)
-    console.log(data)
-}
+// async function getNews() {
+//     const response = await fetch(`${url}${apiKey}`);
+//     const data = await response.json();
+//     // bindArticles(data.articles)
+//     console.log(data)
+// }
 // getNews('India')
 
 // function bindArticles(articles) {
@@ -36,7 +36,7 @@ async function getNews(query) {
 //     newsImage.src = article.urlToImage;
 //     cardTitle.innerHTML = article.title;
 //     cardDes.innerHTML = article.description;
-    
+
 //     const date = new Date(article.publishedAt).toLocaleString()
 //     newsSource.innerHTML = date;
 
@@ -59,3 +59,25 @@ async function getNews(query) {
 
 // }
 
+window.addEventListener('load', () => apiCall());
+
+
+
+const url = 'https://extract-news.p.rapidapi.com/v0/article?url=https%3A%2F%2Fwww.theverge.com%2F2020%2F4%2F17%2F21224728%2Fbill-gates-coronavirus-lies-5g-covid-19';
+const options = {
+    method: 'GET',
+    headers: {
+        'X-RapidAPI-Key': 'a639455754msh383387a14209eddp17f43bjsne5f0438e0673',
+        'X-RapidAPI-Host': 'extract-news.p.rapidapi.com'
+    }
+};
+async function apiCall() {
+
+    try {
+        const response = await fetch(url, options);
+        const result = await response.text();
+        console.log(result);
+    } catch (error) {
+        console.error(error);
+    }
+}
