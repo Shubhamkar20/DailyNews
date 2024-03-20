@@ -1,5 +1,5 @@
 
-/* run this code
+/* run this code on your editior
 
 const apiKey = '14cb86ac492a406f81006f55ee58f978';
 const url = "https://newsapi.org/v2/everything?q=";
